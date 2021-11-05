@@ -1,3 +1,4 @@
-"""
-Library for generating dynamic SVGs using Python
-"""
+####################################################
+# Library for generating dynamic SVGs using Python #
+####################################################
+
