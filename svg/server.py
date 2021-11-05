@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import webbrowser
 
 
-def svg_server(port: int, canvas: Canvas):
+def svg_server(canvas: Canvas, port: int = 8000):
     class MyServer(BaseHTTPRequestHandler):
         def do_GET(self):
             self.send_response(200)
