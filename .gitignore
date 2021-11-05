@@ -1,2 +1,5 @@
 /venv/
 .idea
+python_svg.egg-info
+dist
+build
