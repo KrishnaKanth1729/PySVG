@@ -5,3 +5,5 @@ dist
 build
 .gitinore
 /__pycache__/
+svg/__pycache__
+setup.py
