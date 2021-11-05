@@ -3,3 +3,5 @@
 python_svg.egg-info
 dist
 build
+.gitinore
+/__pycache__/
