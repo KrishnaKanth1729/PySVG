@@ -1,7 +1,8 @@
-import unittest
-from svg import shapes
+import svg
+from svg.canvas import Canvas
+from svg.shapes import Rectangle
+from svg.server import svg_server
 
-
-class RectangleTest(unittest.TestCase):
-    def test_one(self):
-        pass
+canvas = Canvas(500, 500)
+rect1 = Rectangle(200, 100, canvas)
+svg_server(canvas=canvas, port=8000)
