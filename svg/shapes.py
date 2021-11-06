@@ -10,6 +10,7 @@ class Shape:
     def svg_content(self) -> str:
         pass
 
+
 class Rectangle(Shape):
     def __init__(self, width: int, height: int, canvas: Canvas, x: int = 0, y: int = 0, style: Style = Style({"fill": "black"})):
         super().__init__(canvas)
@@ -38,7 +39,7 @@ class Circle(Shape):
         self.fill = fill
 
     def svg_content(self):
-        return f'<circle cx="{self.cx}" cy="{self.cy}" r="{self.r}" stroke="{self.stroke}" stroke-width="{self.stroke_width}" fill="{self.fill}" style={self.style.svg} />'
+        return f'<circle cx="{self.cx}" cy="{self.cy}" r="{self.r}" stroke="{self.stroke}" stroke-width="{self.stroke_width}" fill="{self.fill}" style={self.style.svg()} />'
 
 
 class Point(Shape):
@@ -101,7 +102,6 @@ class Text(Shape):
         self.canvas = canvas
         self.fill = fill
         self.transform = transform
-
 
     def svg_content(self) -> str:
         return f'<text x="{self.x}" y="{self.y}" fill="{self.fill}" transform="{self.transform}">I love SVG</text>'
