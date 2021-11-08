@@ -1,28 +1,47 @@
 from .style import Style
-from typing import List
+from typing import List, Union, Optional
 from .canvas import Canvas
 
 
 class Shape:
     def __init__(self, canvas):
-        self.canvas = canvas
+        self.canvas: Canvas = canvas
+        self.area: int = 0
 
     def svg_content(self) -> str:
         pass
 
 
 class Rectangle(Shape):
-    def __init__(self, width: int, height: int, canvas: Canvas, x: int = 0, y: int = 0, style: Style = Style({"fill": "black"})):
-        super().__init__(canvas)
-        canvas.add_shape(self)
+    def __init__(self, width: int, height: int, parent: Union[Canvas, Shape], x: int = 0, y: int = 0,
+                 style: Style = Style({"fill": "black"}),
+                 rx: int = 0, ry: int = 0):
+
+        """
+        Rectangle class
+
+        :param width
+        :param height: int
+        :param parent
+        :param x:
+        :param y:
+        :param style:
+        :param rx:
+        :param ry:
+        """
+        super().__init__(parent)
+        parent.add_shape(self)
         self.width = width
         self.height = height
+        self.area = self.width * self.height
         self.x = x
         self.y = y
         self.style = style
+        self.rx = rx
+        self.ry = ry
 
     def svg_content(self) -> str:
-        content = f'<rect width="{self.width}" height="{self.height}" x={self.x} y={self.y} style={self.style.svg()} />'
+        content = f'<rect width="{self.width}" height="{self.height}" x={self.x} y={self.y} style={self.style.svg()} rx={self.rx} ry={self.ry} />'
         return content
 
 
@@ -105,4 +124,5 @@ class Text(Shape):
 
     def svg_content(self) -> str:
         return f'<text x="{self.x}" y="{self.y}" fill="{self.fill}" transform="{self.transform}">I love SVG</text>'
+
 
