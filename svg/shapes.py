@@ -42,7 +42,7 @@ class Rectangle(Shape):
         self.ry = ry
 
     def svg_content(self) -> str:
-        content = f'<rect width="{self.width}" height="{self.height}" x={self.x} y={self.y} style={self.style.svg()} rx={self.rx} ry={self.ry} />'
+        content = f'<rect width="{self.width}" height="{self.height}" x="{self.x}" y="{self.y}" style={self.style.svg()} rx={self.rx} ry={self.ry} />'
         return content
 
 
